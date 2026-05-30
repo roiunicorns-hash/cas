@@ -1,0 +1,3806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thewildpatchchallenge</title>
+    <link rel="icon" type="image/jpeg" href="images/caslogo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Enhanced Jungle Green - More vibrant */
+            --sage-50: #f0fdf4;
+            --sage-100: #dcfce7;
+            --sage-200: #bbf7d0;
+            --sage-300: #86efac;
+            --sage-400: #4ade80;
+            --sage-500: #22c55e;
+            --sage-600: #16a34a;
+            --sage-700: #15803d;
+
+            /* Vibrant Wildlife Orange - Tiger/Lion inspired */
+            --terracotta-50: #fff7ed;
+            --terracotta-100: #ffedd5;
+            --terracotta-200: #fed7aa;
+            --terracotta-300: #fdba74;
+            --terracotta-400: #fb923c;
+            --terracotta-500: #f97316;
+            --terracotta-600: #ea580c;
+            --terracotta-700: #c2410c;
+
+            /* Deep Forest - Habitat inspired */
+            --forest-50: #ecfdf5;
+            --forest-100: #d1fae5;
+            --forest-200: #a7f3d0;
+            --forest-300: #6ee7b7;
+            --forest-400: #34d399;
+            --forest-500: #10b981;
+            --forest-600: #059669;
+            --forest-700: #047857;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(74, 103, 65, 0.9), rgba(157, 181, 143, 0.8)),
+                url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .nature-pattern {
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20-20 8.954-20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Jungle Theme Enhancements */
+        .jungle-pattern {
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(21, 128, 61, 0.05) 0%, transparent 50%);
+        }
+
+        .leaf-accent::before {
+            content: '🌿';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .jungle-gradient {
+            background: linear-gradient(135deg,
+                    rgba(34, 197, 94, 0.1) 0%,
+                    rgba(22, 163, 74, 0.1) 50%,
+                    rgba(21, 128, 61, 0.1) 100%);
+        }
+
+        /* Jungle-themed buttons */
+        .btn-jungle {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-jungle:hover {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        /* Responsive jungle cards */
+        .jungle-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .jungle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--sage-500), var(--forest-500));
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--sage-600), var(--forest-600));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--terracotta-400), var(--terracotta-500));
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--terracotta-500), var(--terracotta-600));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-sage-500 {
+            color: var(--sage-500);
+        }
+
+        .text-sage-600 {
+            color: var(--sage-600);
+        }
+
+        .text-sage-700 {
+            color: var(--sage-700);
+        }
+
+        .text-terracotta-500 {
+            color: var(--terracotta-500);
+        }
+
+        .text-terracotta-600 {
+            color: var(--terracotta-600);
+        }
+
+        .text-forest-500 {
+            color: var(--forest-500);
+        }
+
+        .text-forest-600 {
+            color: var(--forest-600);
+        }
+
+        .bg-sage-50 {
+            background-color: var(--sage-50);
+        }
+
+        .bg-sage-100 {
+            background-color: var(--sage-100);
+        }
+
+        .bg-sage-500 {
+            background-color: var(--sage-500);
+        }
+
+        .bg-sage-600 {
+            background-color: var(--sage-600);
+        }
+
+        .bg-sage-700 {
+            background-color: var(--sage-700);
+        }
+
+        .bg-terracotta-50 {
+            background-color: var(--terracotta-50);
+        }
+
+        .bg-terracotta-100 {
+            background-color: var(--terracotta-100);
+        }
+
+        .bg-forest-50 {
+            background-color: var(--forest-50);
+        }
+
+        .bg-forest-100 {
+            background-color: var(--forest-100);
+        }
+
+        .bg-forest-500 {
+            background-color: var(--forest-500);
+        }
+
+        .bg-forest-600 {
+            background-color: var(--forest-600);
+        }
+
+        .border-sage-200 {
+            border-color: var(--sage-200);
+        }
+
+        .border-terracotta-200 {
+            border-color: var(--terracotta-200);
+        }
+
+        /* MOBILE-FIRST COMPLETE REWRITE */
+
+        /* Browser Compatibility Fix */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 100%;
+        }
+
+        /* Mobile Responsive Fix */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .px-4 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .mx-auto {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+
+        /* iPad Mini specific fixes - highest specificity */
+        @media (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+
+            /* Force hamburger lines to be thin rectangles on iPad Mini */
+            #mobile-menu-btn .hamburger-line.block.w-5.h-0\.5.bg-white.rounded-full,
+            #mobile-menu-btn .hamburger-line {
+                height: 1px !important;
+                max-height: 1px !important;
+                min-height: 1px !important;
+                border-radius: 0 !important;
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+                border-bottom-left-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+                width: 20px !important;
+                background-color: white !important;
+                display: block !important;
+                margin: 3px 0 !important;
+                transition: all 0.3s ease !important;
+            }
+        }
+
+        /* Extra Small Mobile Phones (320px - 375px) - iPhone SE Portrait Optimization */
+        @media (max-width: 375px) {
+            nav .container {
+                padding: 6px 8px !important;
+            }
+
+            nav .brand-name {
+                font-size: clamp(12px, 3.8vw, 16px) !important;
+                line-height: 1.0 !important;
+            }
+
+            nav .brand-subtitle {
+                font-size: clamp(8px, 2.2vw, 10px) !important;
+                line-height: 1.0 !important;
+                white-space: normal !important;
+                word-break: break-word !important;
+                hyphens: auto !important;
+                max-width: 100% !important;
+            }
+
+            /* Further reduce logo size for very small screens */
+            nav .flex.items-center.space-x-3 img {
+                height: 32px !important;
+                width: 32px !important;
+            }
+
+            nav .flex.items-center.space-x-3 {
+                gap: 6px !important;
+                max-width: calc(100% - 50px) !important;
+            }
+
+            nav .text-section {
+                max-width: calc(100% - 50px) !important;
+            }
+        }
+
+        /* Standardized Mobile Navigation for all devices up to 1024px */
+        @media (max-width: 1024px) {
+            nav {
+                min-height: 80px !important;
+                background: rgba(255, 255, 255, 0.95) !important;
+                backdrop-filter: blur(15px) !important;
+                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12) !important;
+            }
+
+            nav .container {
+                padding: 16px 32px !important;
+                max-width: 100% !important;
+            }
+
+            nav .flex.justify-between.items-center {
+                min-height: 80px !important;
+                height: 80px !important;
+            }
+
+            /* Logo Section for iPad Mini */
+            nav .flex.items-center.space-x-4 img {
+                height: 48px !important;
+                width: 48px !important;
+            }
+
+            nav .text-section .brand-name {
+                font-size: 22px !important;
+                font-weight: 700 !important;
+                color: #1f2937 !important;
+            }
+
+            nav .text-section .brand-subtitle {
+                display: block !important;
+                font-size: 14px !important;
+                color: #6b7280 !important;
+            }
+
+            /* Mobile Menu Button for iPad Mini */
+            #mobile-menu-btn {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 52px !important;
+                height: 52px !important;
+                margin-left: 24px !important;
+                background: linear-gradient(135deg, #f97316, #ea580c) !important;
+                border-radius: 16px !important;
+                box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3) !important;
+            }
+
+            #mobile-menu-btn:hover {
+                transform: scale(1.05) !important;
+                box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4) !important;
+            }
+
+            /* Hamburger Icon Lines for iPad Mini */
+            #mobile-menu-btn .hamburger-icon {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 24px !important;
+                height: 24px !important;
+            }
+
+            #mobile-menu-btn .hamburger-line {
+                display: block !important;
+                width: 20px !important;
+                height: 1px !important;
+                max-height: 1px !important;
+                min-height: 1px !important;
+                background-color: white !important;
+                border-radius: 0 !important;
+                margin: 3px 0 !important;
+                transition: all 0.3s ease !important;
+                /* Override Tailwind classes completely */
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+                border-bottom-left-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+                /* Force rectangular shape */
+                border: none !important;
+                outline: none !important;
+            }
+
+            /* Hamburger Animation for iPad Mini */
+            #mobile-menu-btn .hamburger-icon.active .hamburger-line:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px) !important;
+            }
+
+            #mobile-menu-btn .hamburger-icon.active .hamburger-line:nth-child(2) {
+                opacity: 0 !important;
+                transform: scale(0) !important;
+            }
+
+            #mobile-menu-btn .hamburger-icon.active .hamburger-line:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px) !important;
+            }
+
+            /* Hide desktop menu on iPad Mini */
+            .hidden.lg\:flex {
+                display: none !important;
+            }
+
+            /* Mobile Menu for iPad Mini */
+            #mobile-menu {
+                margin: 0 16px 16px 16px !important;
+                border-radius: 20px !important;
+                background: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(20px) !important;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+                border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            }
+
+            #mobile-menu .py-4 {
+                padding: 24px 16px !important;
+            }
+
+            #mobile-menu a {
+                padding: 20px 24px !important;
+                font-size: 18px !important;
+                font-weight: 500 !important;
+                border-radius: 12px !important;
+                margin-bottom: 8px !important;
+                min-height: 60px !important;
+                display: flex !important;
+                align-items: center !important;
+            }
+
+            #mobile-menu a:hover {
+                background: rgba(249, 115, 22, 0.1) !important;
+                color: #ea580c !important;
+                transform: translateX(12px) !important;
+            }
+
+            #mobile-menu a:last-child {
+                background: linear-gradient(135deg, #059669, #047857) !important;
+                color: white !important;
+                margin-top: 20px !important;
+                border-radius: 16px !important;
+                min-height: 64px !important;
+                justify-content: center !important;
+                font-weight: 700 !important;
+                box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3) !important;
+            }
+
+            #mobile-menu a:last-child:hover {
+                transform: translateY(-3px) !important;
+                box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4) !important;
+            }
+
+            /* Hero Section for iPad Mini */
+            #home {
+                padding-top: 120px !important;
+                padding-bottom: 60px !important;
+                min-height: calc(100vh - 80px) !important;
+            }
+
+            #home .container {
+                padding-left: 32px !important;
+                padding-right: 32px !important;
+            }
+        }
+
+        /* Enhanced touch targets for larger tablets */
+        @media (min-width: 820px) and (max-width: 1180px) and (-webkit-min-device-pixel-ratio: 2) {
+
+            /* Enhanced touch targets for iPad Air 4th gen */
+            #mobile-menu-btn {
+                width: 56px !important;
+                height: 56px !important;
+                min-width: 56px !important;
+                min-height: 56px !important;
+                margin-left: 28px !important;
+            }
+
+            #mobile-menu a {
+                padding: 22px 26px !important;
+                font-size: 19px !important;
+                min-height: 64px !important;
+            }
+
+            nav .text-section .brand-name {
+                font-size: 24px !important;
+            }
+
+            nav .text-section .brand-subtitle {
+                font-size: 15px !important;
+            }
+        }
+
+        /* Portrait orientation enhancements for tablets */
+        @media (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+
+            /* Ensure hamburger menu is visible on original iPad Air */
+            #mobile-menu-btn {
+                display: flex !important;
+                width: 54px !important;
+                height: 54px !important;
+                margin-left: 26px !important;
+            }
+
+            .hidden.lg\:flex {
+                display: none !important;
+            }
+
+            #mobile-menu a {
+                padding: 21px 25px !important;
+                font-size: 18.5px !important;
+                min-height: 62px !important;
+            }
+        }
+
+        /* Base mobile styles (mobile-first approach) */
+
+        /* NAVIGATION - MOBILE FIRST (Extended to 1024px) */
+        @media (max-width: 1024px) {
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 9999;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+                height: auto;
+                min-height: 60px;
+            }
+
+            nav .container {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 8px 16px;
+            }
+
+            nav .flex.justify-between.items-center {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 60px;
+                padding: 8px 0;
+                flex-wrap: nowrap;
+            }
+
+            /* Logo section - ULTRA FLEXIBLE */
+            nav .flex.items-center.space-x-3 {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex: 1;
+                min-width: 0;
+                max-width: calc(100vw - 80px);
+                overflow: hidden;
+            }
+
+            /* Logo - PROPORTIONAL */
+            nav .w-12.h-12 {
+                width: 48px !important;
+                height: 48px !important;
+                flex-shrink: 0;
+                border-radius: 50%;
+            }
+
+            /* Title - FULLY RESPONSIVE */
+            nav .text-xl.font-bold {
+                font-size: clamp(14px, 4vw, 18px) !important;
+                line-height: 1.2 !important;
+                font-weight: 700 !important;
+                color: #1c1917 !important;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex: 1;
+                min-width: 0;
+            }
+
+            /* Hide subtitle completely on mobile */
+            nav .text-sm.text-sage-600,
+            nav p {
+                display: none !important;
+            }
+
+            /* HAMBURGER - ULTRA VISIBLE & TOUCH-FRIENDLY */
+            #mobile-menu-btn {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 44px !important;
+                height: 44px !important;
+                min-width: 44px !important;
+                min-height: 44px !important;
+                background: linear-gradient(135deg, #1f2937, #374151) !important;
+                color: white !important;
+                border: 2px solid #4b5563 !important;
+                border-radius: 15px !important;
+                flex-shrink: 0;
+                margin-left: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+                transition: all 0.3s ease;
+                position: relative;
+                z-index: 10000;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            /* Hamburger Lines - Universal Styling */
+            .hamburger-line {
+                display: block !important;
+                width: 20px !important;
+                height: 2px !important;
+                background-color: white !important;
+                border-radius: 0 !important;
+                margin: 2px 0 !important;
+                transition: all 0.3s ease !important;
+                border: none !important;
+                outline: none !important;
+            }
+
+            #mobile-menu-btn:hover,
+            #mobile-menu-btn:focus,
+            #mobile-menu-btn:active {
+                background: linear-gradient(135deg, #111827, #1f2937) !important;
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+                outline: none;
+            }
+
+            #mobile-menu-btn i {
+                font-size: 24px !important;
+                color: white !important;
+                font-weight: 900;
+            }
+
+            /* Hide desktop menu */
+            nav .hidden.md\:flex {
+                display: none !important;
+            }
+
+            /* Mobile menu - FULL WIDTH & CENTERED */
+            #mobile-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-top: 3px solid #e5e7eb;
+                padding: 24px 16px;
+                z-index: 9998;
+                width: 100%;
+                margin: 0 !important;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+            }
+
+            #mobile-menu a {
+                display: block;
+                padding: 18px 20px;
+                min-height: 56px;
+                font-size: clamp(16px, 4vw, 18px);
+                font-weight: 600;
+                color: #374151;
+                text-decoration: none;
+                border-bottom: 2px solid #f3f4f6;
+                transition: all 0.3s ease;
+                border-radius: 12px;
+                margin-bottom: 6px;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            #mobile-menu a:hover,
+            #mobile-menu a:active {
+                background: #f9fafb;
+                color: #059669;
+                transform: translateX(8px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            #mobile-menu a:last-child {
+                border-bottom: none;
+                background: linear-gradient(135deg, #059669, #047857);
+                color: white;
+                text-align: center;
+                justify-content: center;
+                border-radius: 15px;
+                margin-top: 16px;
+                font-weight: 700;
+                box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+                min-height: 52px;
+            }
+
+            #mobile-menu a:last-child:hover,
+            #mobile-menu a:last-child:active {
+                background: linear-gradient(135deg, #047857, #065f46);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+            }
+
+            /* Hamburger Menu Animation */
+            .hamburger-icon.active .hamburger-line:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger-icon.active .hamburger-line:nth-child(2) {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            .hamburger-icon.active .hamburger-line:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            /* Mobile Menu Slide Animation */
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            #mobile-menu {
+                animation: slideDown 0.3s ease-out;
+            }
+
+            /* Enhanced Touch Interactions */
+            @media (hover: none) and (pointer: coarse) {
+                #mobile-menu a {
+                    padding: 20px 24px;
+                    min-height: 60px;
+                    font-size: 18px;
+                }
+
+                #mobile-menu-btn {
+                    width: 48px !important;
+                    height: 48px !important;
+                    min-width: 48px !important;
+                    min-height: 48px !important;
+                }
+            }
+        }
+
+        /* Small Mobile Phones (320px - 480px) - iPhone SE Optimization */
+        @media (max-width: 480px) {
+            nav {
+                min-height: 64px !important;
+            }
+
+            nav .container {
+                padding: 8px 12px !important;
+            }
+
+            nav .flex.justify-between.items-center {
+                min-height: 64px !important;
+            }
+
+            /* Optimized brand text for iPhone SE */
+            nav .brand-name {
+                font-size: clamp(14px, 4.2vw, 18px) !important;
+                line-height: 1.1 !important;
+                font-weight: 800 !important;
+                letter-spacing: -0.02em !important;
+            }
+
+            nav .brand-subtitle {
+                font-size: clamp(9px, 2.5vw, 11px) !important;
+                line-height: 1.1 !important;
+                display: block !important;
+                margin-top: 0px !important;
+                font-weight: 500 !important;
+                white-space: nowrap !important;
+                overflow: visible !important;
+                text-overflow: clip !important;
+                letter-spacing: -0.01em !important;
+            }
+
+            /* Ensure logo section has proper spacing */
+            nav .flex.items-center.space-x-3 {
+                gap: 8px !important;
+                min-width: 0 !important;
+                flex: 1 !important;
+                max-width: calc(100% - 60px) !important;
+            }
+
+            nav .text-section {
+                min-width: 0 !important;
+                flex: 1 !important;
+                overflow: visible !important;
+                max-width: calc(100% - 60px) !important;
+            }
+
+            /* Optimize logo size for iPhone SE */
+            nav .flex.items-center.space-x-3 img {
+                height: 36px !important;
+                width: 36px !important;
+                flex-shrink: 0 !important;
+            }
+
+            /* Ensure brand text doesn't get cut off */
+            nav .brand-name {
+                max-width: 100% !important;
+                overflow: visible !important;
+                text-overflow: clip !important;
+                white-space: nowrap !important;
+            }
+
+            #mobile-menu {
+                padding: 16px 12px !important;
+            }
+
+            #mobile-menu a {
+                padding: 16px 18px !important;
+                font-size: 16px !important;
+                min-height: 52px;
+            }
+
+            /* Hero Section for Small Mobile */
+            #home {
+                padding-top: 80px !important;
+                padding-bottom: 32px !important;
+            }
+        }
+
+        /* Large Mobile Phones (481px - 640px) */
+        @media (min-width: 481px) and (max-width: 640px) {
+            nav {
+                min-height: 68px !important;
+            }
+
+            nav .container {
+                padding: 10px 16px !important;
+            }
+
+            nav .flex.justify-between.items-center {
+                min-height: 68px !important;
+            }
+
+            nav .text-xl.font-bold {
+                font-size: 18px !important;
+            }
+
+            #mobile-menu a {
+                padding: 18px 20px !important;
+                font-size: 17px !important;
+                min-height: 56px;
+            }
+        }
+
+        /* Tablet Portrait (641px - 768px) */
+        @media (min-width: 641px) and (max-width: 768px) {
+            nav {
+                min-height: 72px !important;
+            }
+
+            nav .container {
+                padding: 12px 20px !important;
+            }
+
+            nav .flex.justify-between.items-center {
+                min-height: 72px !important;
+            }
+
+            nav .text-xl.font-bold {
+                font-size: 19px !important;
+            }
+
+            nav .text-sm {
+                display: block !important;
+                font-size: 13px !important;
+            }
+
+            #mobile-menu a {
+                padding: 20px 24px !important;
+                font-size: 18px !important;
+                min-height: 58px;
+            }
+
+            /* HERO SECTION - MOBILE OPTIMIZED */
+            #home {
+                margin-top: 80px;
+                min-height: calc(100vh - 80px);
+                padding: 48px 16px 40px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .hero-bg {
+                background-attachment: scroll;
+                background-size: cover;
+                background-position: center;
+                width: 100%;
+            }
+
+            /* Hero content - ULTRA RESPONSIVE */
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 3rem) !important;
+                line-height: 1.1 !important;
+                margin-bottom: 24px !important;
+                text-align: center;
+                font-weight: 800;
+                word-wrap: break-word;
+            }
+
+            /* Animal Particle Animations */
+            @keyframes float-slow {
+
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+
+                25% {
+                    transform: translateY(-15px) rotate(2deg);
+                }
+
+                50% {
+                    transform: translateY(-10px) rotate(0deg);
+                }
+
+                75% {
+                    transform: translateY(-20px) rotate(-2deg);
+                }
+            }
+
+            @keyframes float-medium {
+
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+
+                33% {
+                    transform: translateY(-12px) rotate(3deg);
+                }
+
+                66% {
+                    transform: translateY(-8px) rotate(-1deg);
+                }
+            }
+
+            @keyframes float-fast {
+
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+
+                50% {
+                    transform: translateY(-8px) rotate(1deg);
+                }
+            }
+
+            @keyframes bounce-slow {
+
+                0%,
+                100% {
+                    transform: translateY(0px);
+                }
+
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+
+            @keyframes sway {
+
+                0%,
+                100% {
+                    transform: translateX(0px) rotate(0deg);
+                }
+
+                25% {
+                    transform: translateX(5px) rotate(1deg);
+                }
+
+                75% {
+                    transform: translateX(-5px) rotate(-1deg);
+                }
+            }
+
+            @keyframes wiggle {
+
+                0%,
+                100% {
+                    transform: rotate(0deg);
+                }
+
+                25% {
+                    transform: rotate(2deg);
+                }
+
+                75% {
+                    transform: rotate(-2deg);
+                }
+            }
+
+            @keyframes gentle-rock {
+
+                0%,
+                100% {
+                    transform: rotate(0deg) scale(1);
+                }
+
+                50% {
+                    transform: rotate(1deg) scale(1.05);
+                }
+            }
+
+            @keyframes pulse-slow {
+
+                0%,
+                100% {
+                    opacity: 0.35;
+                    transform: scale(1);
+                }
+
+                50% {
+                    opacity: 0.6;
+                    transform: scale(1.1);
+                }
+            }
+
+            @keyframes gentle-sway {
+
+                0%,
+                100% {
+                    transform: translateX(0px) translateY(0px);
+                }
+
+                33% {
+                    transform: translateX(3px) translateY(-2px);
+                }
+
+                66% {
+                    transform: translateX(-3px) translateY(2px);
+                }
+            }
+
+            @keyframes slow-rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes gentle-bob {
+
+                0%,
+                100% {
+                    transform: translateY(0px);
+                }
+
+                50% {
+                    transform: translateY(-5px);
+                }
+            }
+
+            @keyframes hop {
+
+                0%,
+                100% {
+                    transform: translateY(0px) scale(1);
+                }
+
+                50% {
+                    transform: translateY(-8px) scale(1.1);
+                }
+            }
+
+            @keyframes waddle {
+
+                0%,
+                100% {
+                    transform: translateX(0px) rotate(0deg);
+                }
+
+                25% {
+                    transform: translateX(3px) rotate(2deg);
+                }
+
+                75% {
+                    transform: translateX(-3px) rotate(-2deg);
+                }
+            }
+
+            @keyframes majestic-stand {
+
+                0%,
+                100% {
+                    transform: scale(1) rotate(0deg);
+                }
+
+                50% {
+                    transform: scale(1.08) rotate(1deg);
+                }
+            }
+
+            /* Animation Classes */
+            .animate-float-slow {
+                animation: float-slow 6s ease-in-out infinite;
+            }
+
+            .animate-float-medium {
+                animation: float-medium 4s ease-in-out infinite;
+            }
+
+            .animate-float-fast {
+                animation: float-fast 3s ease-in-out infinite;
+            }
+
+            .animate-bounce-slow {
+                animation: bounce-slow 3s ease-in-out infinite;
+            }
+
+            .animate-sway {
+                animation: sway 5s ease-in-out infinite;
+            }
+
+            .animate-wiggle {
+                animation: wiggle 2s ease-in-out infinite;
+            }
+
+            .animate-gentle-rock {
+                animation: gentle-rock 4s ease-in-out infinite;
+            }
+
+            .animate-pulse-slow {
+                animation: pulse-slow 4s ease-in-out infinite;
+            }
+
+            .animate-gentle-sway {
+                animation: gentle-sway 5s ease-in-out infinite;
+            }
+
+            .animate-slow-rotate {
+                animation: slow-rotate 20s linear infinite;
+            }
+
+            .animate-gentle-bob {
+                animation: gentle-bob 3s ease-in-out infinite;
+            }
+
+            .animate-hop {
+                animation: hop 2s ease-in-out infinite;
+            }
+
+            .animate-waddle {
+                animation: waddle 4s ease-in-out infinite;
+            }
+
+            .animate-majestic-stand {
+                animation: majestic-stand 6s ease-in-out infinite;
+            }
+
+            /* Mobile and Tablet Hero Centering */
+            @media (max-width: 1023px) {
+                #home .fade-in {
+                    text-align: center !important;
+                }
+
+                #home .hero-title {
+                    text-align: center !important;
+                }
+
+                #home p {
+                    text-align: center !important;
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                }
+
+                #home .flex {
+                    justify-content: center !important;
+                }
+
+                /* Center the badge container */
+                #home .fade-in>div:first-child {
+                    justify-content: center !important;
+                }
+            }
+
+            /* Mobile Animal Particles Optimization */
+            @media (max-width: 768px) {
+
+                /* Ensure animal particles are visible and well-sized on mobile */
+                #home .absolute[class*="animate-"] {
+                    opacity: 0.7 !important;
+                    z-index: 5;
+                }
+
+                /* Adjust flying animals for mobile */
+                #home .absolute.top-20 {
+                    top: 5rem !important;
+                }
+
+                #home .absolute.top-32 {
+                    top: 8rem !important;
+                }
+
+                #home .absolute.top-40 {
+                    top: 10rem !important;
+                }
+
+                #home .absolute.top-60 {
+                    top: 15rem !important;
+                }
+
+                #home .absolute.top-80 {
+                    top: 20rem !important;
+                }
+
+                /* Adjust ground animals for mobile */
+                #home .absolute.bottom-20 {
+                    bottom: 5rem !important;
+                }
+
+                #home .absolute.bottom-32 {
+                    bottom: 8rem !important;
+                }
+
+                #home .absolute.bottom-40 {
+                    bottom: 10rem !important;
+                }
+
+                #home .absolute.bottom-60 {
+                    bottom: 15rem !important;
+                }
+
+                #home .absolute.bottom-80 {
+                    bottom: 20rem !important;
+                }
+
+                /* Ensure proper spacing from edges */
+                #home .absolute.left-6 {
+                    left: 1rem !important;
+                }
+
+                #home .absolute.left-8 {
+                    left: 1.5rem !important;
+                }
+
+                #home .absolute.left-10 {
+                    left: 2rem !important;
+                }
+
+                #home .absolute.right-6 {
+                    right: 1rem !important;
+                }
+
+                #home .absolute.right-8 {
+                    right: 1.5rem !important;
+                }
+
+                #home .absolute.right-12 {
+                    right: 2rem !important;
+                }
+
+                #home .absolute.right-16 {
+                    right: 2.5rem !important;
+                }
+
+                /* Mobile-specific animal visibility */
+                #home .animate-float-slow,
+                #home .animate-float-medium,
+                #home .animate-float-fast {
+                    opacity: 0.8 !important;
+                }
+
+                #home .animate-bounce-slow,
+                #home .animate-sway,
+                #home .animate-gentle-rock {
+                    opacity: 0.7 !important;
+                }
+
+                /* Reduce animation intensity on mobile for better performance */
+                #home .animate-slow-rotate {
+                    animation-duration: 30s !important;
+                }
+            }
+
+            /* Extra small mobile optimization */
+            @media (max-width: 480px) {
+
+                /* Further optimize for very small screens */
+                #home .absolute[class*="animate-"] {
+                    opacity: 0.6 !important;
+                }
+
+                /* Ensure minimum sizes are maintained */
+                #home .absolute .w-8 {
+                    width: 2rem !important;
+                    height: 2rem !important;
+                }
+
+                #home .absolute .w-10 {
+                    width: 2.5rem !important;
+                    height: 2.5rem !important;
+                }
+
+                #home .absolute .w-12 {
+                    width: 3rem !important;
+                    height: 3rem !important;
+                }
+
+                #home .absolute .w-14 {
+                    width: 3.5rem !important;
+                    height: 3.5rem !important;
+                }
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.25rem) !important;
+                line-height: 1.5 !important;
+                margin-bottom: 32px !important;
+                text-align: center;
+                padding: 0 16px;
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                word-wrap: break-word;
+            }
+
+            /* Hero buttons - STACK PROPERLY */
+            .hero-buttons {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+                width: 100% !important;
+                max-width: 350px !important;
+                margin: 0 auto 32px auto !important;
+                padding: 0 16px;
+            }
+
+            .hero-buttons a {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 18px 24px !important;
+                font-size: clamp(14px, 4vw, 16px) !important;
+                font-weight: 600 !important;
+                border-radius: 50px !important;
+                transition: all 0.3s !important;
+                display: block !important;
+                box-sizing: border-box;
+            }
+
+            /* Stats - RESPONSIVE GRID */
+            .stats-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+                margin-top: 40px !important;
+                padding: 0 16px !important;
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            /* ALL SECTIONS - MOBILE FIRST */
+            section {
+                padding: 48px 16px !important;
+                width: 100% !important;
+                overflow-x: hidden !important;
+                box-sizing: border-box;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-sizing: border-box;
+            }
+
+            /* ALL GRIDS - SINGLE COLUMN */
+            .grid,
+            .grid.md\:grid-cols-2,
+            .grid.md\:grid-cols-3,
+            .grid.md\:grid-cols-4,
+            .services-grid,
+            .portfolio-grid,
+            .contact-grid,
+            .footer-grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+                width: 100% !important;
+            }
+
+            /* TYPOGRAPHY - FULLY RESPONSIVE */
+            h1 {
+                font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+                line-height: 1.2 !important;
+                margin-bottom: 16px !important;
+                word-wrap: break-word;
+            }
+
+            h2 {
+                font-size: clamp(1.5rem, 5vw, 2rem) !important;
+                line-height: 1.3 !important;
+                text-align: center;
+                margin-bottom: 24px !important;
+                word-wrap: break-word;
+            }
+
+            h3 {
+                font-size: clamp(1.25rem, 4vw, 1.5rem) !important;
+                line-height: 1.4 !important;
+                margin-bottom: 16px !important;
+                word-wrap: break-word;
+            }
+
+            p {
+                font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+                line-height: 1.6 !important;
+                margin-bottom: 16px !important;
+                word-wrap: break-word;
+            }
+
+            /* CARDS - RESPONSIVE */
+            .bg-white {
+                padding: 24px !important;
+                margin-bottom: 20px !important;
+                border-radius: 16px !important;
+                width: 100% !important;
+                box-sizing: border-box;
+            }
+
+            /* IMAGES - FULLY RESPONSIVE */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                border-radius: 12px;
+                display: block;
+            }
+
+            /* BUTTONS - CONSISTENT */
+            .btn-primary,
+            a[class*="btn"] {
+                padding: 16px 32px !important;
+                font-size: clamp(14px, 3.5vw, 16px) !important;
+                font-weight: 600 !important;
+                border-radius: 50px !important;
+                text-align: center !important;
+                display: block !important;
+                width: 100% !important;
+                max-width: 300px;
+                margin: 0 auto;
+                box-sizing: border-box;
+            }
+
+            /* SOCIAL LINKS */
+            .flex.space-x-4 {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 12px !important;
+                justify-content: center !important;
+            }
+
+            .flex.space-x-4 a {
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 20px !important;
+                flex-shrink: 0;
+            }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+
+            .mobile-padding {
+                padding: 1rem;
+            }
+
+            .mobile-text-center {
+                text-align: center;
+            }
+
+            .nav-container .flex.items-center.space-x-3 h1 {
+                font-size: 0.875rem !important;
+                /* 14px */
+                line-height: 1.2;
+            }
+
+            .nav-container .flex.items-center.space-x-3 p {
+                font-size: 0.75rem !important;
+                /* 12px */
+                line-height: 1.2;
+            }
+
+            .nav-container .flex.items-center.space-x-3 {
+                gap: 0.5rem !important;
+                /* Reduce spacing on mobile */
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 768px) {
+            .nav-container .flex.items-center.space-x-3 h1 {
+                font-size: 1rem !important;
+                /* 16px */
+            }
+
+            .nav-container .flex.items-center.space-x-3 p {
+                font-size: 0.875rem !important;
+                /* 14px */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .opportunities-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-container .flex.items-center.space-x-3 h1 {
+                font-size: 1.25rem !important;
+                /* 20px */
+            }
+
+            .nav-container .flex.items-center.space-x-3 p {
+                font-size: 1rem !important;
+                /* 16px */
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .lg\:grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Ensure text doesn't overflow */
+        .nav-container .flex.items-center.space-x-3 div:last-child {
+            overflow: hidden;
+            max-width: calc(100vw - 200px);
+            /* Adjust based on your layout */
+        }
+
+        /* NAVIGATION - DESKTOP ALIGNMENT FIX */
+        @media (min-width: 769px) {
+            nav .flex.justify-between.items-center {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 80px;
+                padding: 16px 0;
+            }
+
+            /* Logo and Text Section - Aligned with Contact Button */
+            nav .flex.items-center.space-x-3 {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                height: 48px;
+                /* Match contact button height */
+            }
+
+            /* Logo - Consistent sizing */
+            nav .w-12.h-12 {
+                width: 48px !important;
+                height: 48px !important;
+                flex-shrink: 0;
+            }
+
+            /* Title and subtitle container - Vertically centered */
+            nav .min-w-0.flex-shrink {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 48px;
+                /* Match contact button height */
+                line-height: 1.2;
+            }
+
+            /* Main title - Aligned */
+            nav .text-xl.font-bold {
+                font-size: 20px !important;
+                line-height: 1.2 !important;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Subtitle - Aligned */
+            nav .text-sm.text-sage-600 {
+                font-size: 14px !important;
+                line-height: 1.2 !important;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Desktop Menu - Aligned with Contact Button */
+            nav .hidden.md\:flex {
+                display: flex !important;
+                align-items: center;
+                gap: 32px;
+                height: 48px;
+                /* Match contact button height */
+            }
+
+            /* Menu links - Vertically centered */
+            nav .hidden.md\:flex a:not(.btn-primary) {
+                display: flex;
+                align-items: center;
+                height: 48px;
+                /* Match contact button height */
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 1;
+            }
+
+            /* Contact button - Reference height */
+            nav .btn-primary {
+                height: 48px !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 24px !important;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1;
+                border-radius: 24px;
+            }
+
+            .hero-title {
+                font-size: 3.5rem !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .grid.md\:grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        /* Mobile fixes for Contact Section and Footer */
+        @media (max-width: 768px) {
+
+            /* Contact Section Mobile Fixes */
+            #contact {
+                padding: 2rem 0 !important;
+            }
+
+            #contact .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            #contact .contact-grid {
+                gap: 1.5rem !important;
+                margin-bottom: 2rem;
+            }
+
+            #contact .bg-white {
+                padding: 1.25rem !important;
+                padding-bottom: 0.75rem !important;
+                margin-bottom: 1rem;
+            }
+
+            #contact h2 {
+                font-size: 2rem !important;
+                margin-bottom: 1rem !important;
+                padding: 0 1rem;
+            }
+
+            #contact h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            #contact .space-y-4>div {
+                margin-bottom: 1rem !important;
+                padding: 0.75rem !important;
+            }
+
+            #contact .grid.grid-cols-1.md\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            #contact input,
+            #contact select,
+            #contact textarea {
+                padding: 0.75rem !important;
+                font-size: 1rem !important;
+            }
+
+            #contact .mb-6 {
+                margin-bottom: 1rem !important;
+            }
+
+            /* Reviews & Testimonials and Support Career Button Mobile Text Centering */
+            #reviews .inline-flex,
+            #support-career .inline-flex {
+                justify-content: center !important;
+                text-align: center !important;
+            }
+
+            #reviews .inline-flex i,
+            #support-career .inline-flex i {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* Footer Mobile Fixes */
+            footer {
+                padding: 2rem 0 !important;
+            }
+
+            footer .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            footer .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            /* Hero Section Mobile Spacing */
+            #home {
+                padding-top: 8rem !important;
+            }
+
+            footer .md\:col-span-2 {
+                grid-column: span 1 !important;
+            }
+
+            footer h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            footer h4 {
+                font-size: 1.125rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            footer p {
+                margin-bottom: 1.5rem !important;
+                font-size: 0.875rem !important;
+                line-height: 1.5 !important;
+            }
+
+            footer .flex.flex-wrap.gap-2 {
+                gap: 0.75rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            footer .space-y-2>li {
+                margin-bottom: 0.75rem !important;
+            }
+
+            footer .space-y-3>div {
+                margin-bottom: 1rem !important;
+            }
+
+            footer .border-t {
+                padding-top: 1.5rem !important;
+                margin-top: 2rem !important;
+            }
+
+            footer .text-stone-400 {
+                font-size: 0.875rem !important;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Extra small screens */
+            #contact {
+                padding: 1.5rem 0 !important;
+            }
+
+            #contact .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+
+            #contact .bg-white {
+                padding: 1rem !important;
+            }
+
+            #contact h2 {
+                font-size: 1.75rem !important;
+            }
+
+            footer {
+                padding: 1.5rem 0 !important;
+            }
+
+            footer .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+
+            footer .footer-grid {
+                gap: 1.5rem !important;
+            }
+
+            /* Meet Your Wildlife Guide Mobile Touch Fix */
+            .group.cursor-pointer {
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: transparent !important;
+                user-select: none !important;
+                -webkit-user-select: none !important;
+            }
+
+            .group.cursor-pointer:active {
+                transform: scale(0.95) !important;
+                transition: transform 0.1s ease !important;
+            }
+
+            .group.cursor-pointer img {
+                pointer-events: none !important;
+            }
+        }
+        /* Heartbeat animation for heart icon */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.15); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        .heart-beat {
+            animation: heartbeat 1.4s ease-in-out infinite;
+            transform-origin: center;
+            will-change: transform;
+            line-height: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-18 md:h-20">
+                <!-- Enhanced Logo Section -->
+                <div class="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                    <div class="relative group">
+                        <img src="images/caslogo.jpg" alt="Cas Animal Adventures Logo"
+                            class="h-10 sm:h-12 md:h-14 w-10 sm:w-12 md:w-14 rounded-full object-cover flex-shrink-0 ring-2 ring-white/30 group-hover:ring-white/50 transition-all duration-300 shadow-lg">
+                        <div
+                            class="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="text-section min-w-0 flex-1">
+                        <div
+                            class="brand-name text-sm sm:text-lg md:text-xl font-bold text-white truncate tracking-wide">
+                            casanimaladventures
+                        </div>
+                        <div class="brand-subtitle text-xs sm:text-sm text-emerald-200 block truncate font-medium">
+                            Wildlife • Education • Conservation
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+                    <a href="#home"
+                        class="nav-link text-white hover:text-emerald-300 transition-all duration-300 font-medium text-sm xl:text-base relative group">
+                        <span>Home</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-300 group-hover:w-full transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#opportunities"
+                        class="nav-link text-white hover:text-emerald-300 transition-all duration-300 font-medium text-sm xl:text-base relative group">
+                        <span>Opportunities</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-300 group-hover:w-full transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#about"
+                        class="nav-link text-white hover:text-emerald-300 transition-all duration-300 font-medium text-sm xl:text-base relative group">
+                        <span>About</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-300 group-hover:w-full transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#services"
+                        class="nav-link text-white hover:text-emerald-300 transition-all duration-300 font-medium text-sm xl:text-base relative group">
+                        <span>Services</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-300 group-hover:w-full transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#wild-patch"
+                        class="nav-link text-white hover:text-emerald-300 transition-all duration-300 font-medium text-sm xl:text-base relative group">
+                        <span>Challenge</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-300 group-hover:w-full transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#wildlife-facilities"
+                        class="nav-link text-white hover:text-emerald-300 transition-all duration-300 font-medium text-sm xl:text-base relative group">
+                        <span>Wildlife</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-300 group-hover:w-full transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#past-trips"
+                        class="nav-link text-white hover:text-emerald-300 transition-all duration-300 font-medium text-sm xl:text-base relative group">
+                        <span>Past Trips</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-300 group-hover:w-full transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#contact"
+                        class="btn-contact bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
+                        Contact
+                    </a>
+                </div>
+
+                <!-- Redesigned Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="lg:hidden relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 ml-3 sm:ml-4 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 border border-white/20 backdrop-blur-sm group"
+                    type="button" aria-label="Toggle mobile menu">
+                    <!-- Animated background -->
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <!-- Enhanced hamburger icon -->
+                    <div
+                        class="hamburger-icon relative w-6 h-6 sm:w-7 sm:h-7 flex flex-col justify-center items-center z-10">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </div>
+
+                    <!-- Pulse effect -->
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-emerald-400/30 animate-ping opacity-0 group-hover:opacity-75">
+                    </div>
+                </button>
+            </div>
+
+            <!-- Redesigned Mobile Menu -->
+            <div id="mobile-menu"
+                class="hidden lg:hidden absolute top-full left-0 right-0 mt-2 bg-white/98 backdrop-blur-xl shadow-2xl rounded-3xl border border-white/30 overflow-hidden transform transition-all duration-500 ease-out">
+                <!-- Menu header with gradient -->
+                <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 p-4 sm:p-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-paw text-white text-sm sm:text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold text-base sm:text-lg">Navigation</h3>
+                            <p class="text-white/80 text-xs sm:text-sm">Explore our wildlife world</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced menu items -->
+                <div class="py-4 sm:py-6 px-2 sm:px-4 space-y-2">
+                    <a href="#home"
+                        class="mobile-nav-item group flex items-center px-4 sm:px-6 py-4 sm:py-5 text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 rounded-2xl transition-all duration-300 font-medium text-base sm:text-lg transform hover:translate-x-2 hover:scale-105">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 group-hover:bg-emerald-200 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                            <i class="fas fa-home text-emerald-600 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="flex-1">Home</span>
+                        <i
+                            class="fas fa-chevron-right text-gray-400 group-hover:text-emerald-600 transition-all duration-300 transform group-hover:translate-x-1"></i>
+                    </a>
+                    <a href="#opportunities"
+                        class="mobile-nav-item group flex items-center px-4 sm:px-6 py-4 sm:py-5 text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 rounded-2xl transition-all duration-300 font-medium text-base sm:text-lg transform hover:translate-x-2 hover:scale-105">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 group-hover:bg-yellow-200 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                            <i class="fas fa-star text-yellow-600 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="flex-1">Opportunities</span>
+                        <i
+                            class="fas fa-chevron-right text-gray-400 group-hover:text-emerald-600 transition-all duration-300 transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#about"
+                        class="mobile-nav-item group flex items-center px-4 sm:px-6 py-4 sm:py-5 text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 rounded-2xl transition-all duration-300 font-medium text-base sm:text-lg transform hover:translate-x-2 hover:scale-105">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 group-hover:bg-blue-200 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                            <i class="fas fa-user-friends text-blue-600 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="flex-1">About</span>
+                        <i
+                            class="fas fa-chevron-right text-gray-400 group-hover:text-emerald-600 transition-all duration-300 transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#services"
+                        class="mobile-nav-item group flex items-center px-4 sm:px-6 py-4 sm:py-5 text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 rounded-2xl transition-all duration-300 font-medium text-base sm:text-lg transform hover:translate-x-2 hover:scale-105">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 group-hover:bg-purple-200 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                            <i class="fas fa-cogs text-purple-600 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="flex-1">Services</span>
+                        <i
+                            class="fas fa-chevron-right text-gray-400 group-hover:text-emerald-600 transition-all duration-300 transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#wild-patch"
+                        class="mobile-nav-item group flex items-center px-4 sm:px-6 py-4 sm:py-5 text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 rounded-2xl transition-all duration-300 font-medium text-base sm:text-lg transform hover:translate-x-2 hover:scale-105">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 group-hover:bg-green-200 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                            <i class="fas fa-seedling text-green-600 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="flex-1">Wild Patch Challenge</span>
+                        <i
+                            class="fas fa-chevron-right text-gray-400 group-hover:text-emerald-600 transition-all duration-300 transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#wildlife-facilities"
+                        class="mobile-nav-item group flex items-center px-4 sm:px-6 py-4 sm:py-5 text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 rounded-2xl transition-all duration-300 font-medium text-base sm:text-lg transform hover:translate-x-2 hover:scale-105">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 group-hover:bg-orange-200 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                            <i class="fas fa-tree text-orange-600 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="flex-1">Wildlife Facilities</span>
+                        <i
+                            class="fas fa-chevron-right text-gray-400 group-hover:text-emerald-600 transition-all duration-300 transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#past-trips"
+                        class="mobile-nav-item group flex items-center px-4 sm:px-6 py-4 sm:py-5 text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 rounded-2xl transition-all duration-300 font-medium text-base sm:text-lg transform hover:translate-x-2 hover:scale-105">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 bg-pink-100 group-hover:bg-pink-200 rounded-xl flex items-center justify-center mr-4 transition-all duration-300">
+                            <i class="fas fa-camera text-pink-600 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="flex-1">Past Trips</span>
+                        <i
+                            class="fas fa-chevron-right text-gray-400 group-hover:text-emerald-600 transition-all duration-300 transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <!-- Enhanced Contact Button -->
+                    <div class="pt-4 sm:pt-6 px-2 sm:px-4">
+                        <a href="#contact"
+                            class="contact-btn group relative flex items-center justify-center w-full px-6 py-4 sm:py-5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 text-white rounded-2xl text-center font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden">
+                            <!-- Animated background -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out">
+                            </div>
+
+                            <!-- Contact icon -->
+                            <div
+                                class="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center mr-3 sm:mr-4 relative z-10">
+                                <i class="fas fa-phone text-white text-sm sm:text-base"></i>
+                            </div>
+
+                            <!-- Contact text -->
+                            <span class="relative z-10 tracking-wide">Contact Us</span>
+
+                            <!-- Arrow icon -->
+                            <i
+                                class="fas fa-arrow-right ml-3 sm:ml-4 text-white/80 group-hover:text-white transition-all duration-300 transform group-hover:translate-x-1 relative z-10"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Jungle Redesign with Header Spacing -->
+    <section id="home"
+        class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 lg:pt-20 lg:pb-16">
+        <!-- Jungle Overlay Effects -->
+        <div class="absolute inset-0 bg-gradient-to-br from-green-900/40 via-transparent to-green-800/60"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+
+        <!-- Jungle Decorative Elements -->
+
+
+
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)]">
+                <!-- Left Content Column - Show second on mobile -->
+                <div class="fade-in space-y-8 order-2 lg:order-1 text-center lg:text-left">
+                    <!-- Jungle Badge -->
+                    <div class="flex justify-center lg:justify-start">
+                        <div
+                            class="inline-flex items-center bg-green-600/20 backdrop-blur-sm border border-green-400/30 rounded-full px-6 py-3 mb-4 mt-8">
+                            <span class="text-green-300 text-sm font-semibold tracking-wide">WILD ADVENTURES
+                                AWAIT</span>
+                        </div>
+                    </div>
+
+                    <h1
+                        class="hero-title text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-center lg:text-left">
+                        <span class="text-white">Discover</span><br>
+                        <span class="text-green-300">Wildlife</span><br>
+                        <span
+                            class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Adventures</span>
+                    </h1>
+
+                    <p
+                        class="text-xl lg:text-2xl text-green-100 leading-relaxed max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
+                        Embark on <span class="text-yellow-300 font-semibold">ethical wildlife journeys</span> that
+                        connect you with nature's most incredible creatures and conservation efforts worldwide.
+                    </p>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+                        <a href="#contact"
+                            class="group bg-transparent border-2 border-green-300 hover:bg-green-300 hover:text-green-900 text-green-300 px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 flex items-center justify-center">
+                            <i class="fas fa-calendar mr-3 group-hover:bounce"></i>
+                            Plan Adventure Now!
+                        </a>
+                    </div>
+
+                    <!-- Jungle Stats -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8 justify-center lg:justify-start">
+                        <div
+                            class="text-center bg-green-800/30 backdrop-blur-sm rounded-xl p-4 border border-green-400/20">
+                            <div class="text-3xl font-bold text-yellow-300 mb-1">50+</div>
+                            <div class="text-sm text-green-200">Wild Destinations</div>
+                        </div>
+                        <div
+                            class="text-center bg-green-800/30 backdrop-blur-sm rounded-xl p-4 border border-green-400/20">
+                            <div class="text-3xl font-bold text-yellow-300 mb-1">🧭</div>
+                            <div class="text-sm text-green-200">Adventures Awaiting</div>
+                        </div>
+                        <div
+                            class="text-center bg-green-800/30 backdrop-blur-sm rounded-xl p-4 border border-green-400/20">
+                            <div class="text-3xl font-bold text-yellow-300 mb-1">24/7</div>
+                            <div class="text-sm text-green-200">Adventure Planning</div>
+                        </div>
+                        <div
+                            class="text-center bg-green-800/30 backdrop-blur-sm rounded-xl p-4 border border-green-400/20">
+                            <div class="text-3xl font-bold text-yellow-300 mb-1">100%</div>
+                            <div class="text-sm text-green-200">Ethical Travel</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Photo Column - Show first on mobile -->
+                <div class="flex justify-center lg:justify-end fade-in order-1 lg:order-2">
+                    <div class="relative">
+                        <!-- Jungle Frame Effect -->
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-br from-green-400/30 to-yellow-400/30 rounded-full blur-xl">
+                        </div>
+                        <div
+                            class="absolute -inset-2 bg-gradient-to-br from-green-500/40 to-orange-400/40 rounded-full blur-lg">
+                        </div>
+
+                        <!-- Main Photo -->
+                        <div
+                            class="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-green-300/60 shadow-2xl">
+                            <img src="images/wani.jpg" alt="Cassandra with wildlife" class="w-full h-full object-cover">
+
+                            <!-- Photo Overlay -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-green-900/20 via-transparent to-transparent">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section-padding py-20 bg-gradient-to-br from-blue-50 to-indigo-50 jungle-pattern">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="fade-in mb-12">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+                        <span class="text-blue-600">Reviews</span> & Testimonials
+                    </h2>
+                    <p class="text-xl text-stone-600 max-w-3xl mx-auto mb-8">
+                        See what others are saying about their wildlife adventures and conservation experiences with
+                        CasAnimalAdventures!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://www.facebook.com/profile.php?id=61567946146382" target="_blank"
+                            class="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <i class="fab fa-facebook mr-3"></i>
+                            Facebook Reviews
+                            <i class="fas fa-external-link-alt ml-3 text-sm"></i>
+                        </a>
+                        <a href="https://instagram.com/casanimaladventures" target="_blank"
+                            class="inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <i class="fab fa-instagram mr-3"></i>
+                            Instagram Reviews
+                            <i class="fas fa-external-link-alt ml-3 text-sm"></i>
+                        </a>
+                    </div>
+                    <p class="text-sm text-stone-500 mt-4">
+                        <i class="fas fa-star mr-1 text-yellow-500"></i>
+                        Share your experience and help others discover wildlife conservation
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Trip Opportunities Section -->
+    <section id="opportunities" class="py-16 bg-gradient-to-br from-green-50 to-sage-100 jungle-pattern">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+                    <span class="text-green-600">Current Opportunities</span>
+                </h2>
+                <p class="text-xl text-stone-600 max-w-3xl mx-auto">
+                    Ready for your next adventure? Explore our current travel and training opportunities.
+                </p>
+            </div>
+
+            <!-- Main Trip Showcase with Photo Collage -->
+            <div class="max-w-4xl mx-auto mb-12">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover fade-in">
+                    <!-- Photo Collage Header -->
+                    <div class="relative h-80 overflow-hidden">
+                        <!-- Main background image -->
+                        <div class="absolute inset-0">
+                            <img src="images/rica.jpg" alt="Wildlife Adventures" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-900/60 to-transparent"></div>
+                        </div>
+
+                        <!-- Floating photo elements for collage effect -->
+                        <div
+                            class="absolute top-4 right-4 w-24 h-24 rounded-xl overflow-hidden border-4 border-white shadow-lg transform rotate-12">
+                            <img src="images/vets.jpg" alt="Vet Experience" class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="absolute bottom-4 right-12 w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-lg transform -rotate-6">
+                            <img src="images/wani.jpg" alt="Wildlife Encounter" class="w-full h-full object-cover">
+                        </div>
+
+
+                        <!-- Overlay content -->
+                        <div class="absolute inset-0 flex items-center justify-start pl-8">
+                            <div class="text-white max-w-md">
+                                <h3 class="text-3xl md:text-4xl font-bold mb-4">Wildlife Adventures Await</h3>
+                                <p class="text-lg mb-6 text-green-100">From conservation research to veterinary
+                                    experiences - discover your perfect wildlife adventure</p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span
+                                        class="bg-green-600/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                                        <img src="images/D.jpg" alt="Conservation" class="w-4 h-4 rounded-full mr-1">
+                                        Conservation
+                                    </span>
+                                    <span
+                                        class="bg-blue-600/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                                        <img src="images/F.jpg" alt="Veterinary" class="w-4 h-4 rounded-full mr-1">
+                                        Veterinary
+                                    </span>
+                                    <span
+                                        class="bg-orange-600/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                                        <img src="images/G.jpg" alt="Research" class="w-4 h-4 rounded-full mr-1">
+                                        Research
+                                    </span>
+                                    <span
+                                        class="bg-purple-600/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                                        <img src="images/1.jpg" alt="Travel" class="w-4 h-4 rounded-full mr-1">
+                                        Travel
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action Section -->
+                    <div class="p-8 text-center relative overflow-hidden">
+
+                        <h4 class="text-2xl font-bold text-stone-800 mb-4">Explore All Opportunities, Study Abroad, Internships, etc.</h4>
+                        <p class="text-stone-600 mb-6 max-w-2xl mx-auto">
+                            View our complete collection of wildlife adventures, conservation programs, and veterinary
+                            experiences.
+                            New opportunities are added regularly!
+                        </p>
+
+                        <!-- Stats Row -->
+                        <div class="grid grid-cols-3 gap-4 mb-8 max-w-md mx-auto">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-600">50+</div>
+                                <div class="text-sm text-stone-500">Destinations</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="flex justify-center mb-1">
+                                    <div class="text-3xl font-bold text-yellow-300 mb-1">🧭</div>
+                                </div>
+                                <div class="text-sm text-stone-500">Adventures</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-purple-600">100%</div>
+                                <div class="text-sm text-stone-500">Ethical</div>
+                            </div>
+                        </div>
+
+                        <!-- Main CTA Button -->
+                        <a href="https://linktr.ee/casanimaladventures" target="_blank"
+                            class="inline-flex items-center bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <i class="fas fa-compass mr-3"></i>
+                            View All Trips
+                            <i class="fas fa-external-link-alt ml-3 text-sm"></i>
+                        </a>
+
+                        <p class="text-sm text-stone-500 mt-4">
+                            <i class="fas fa-sync-alt mr-1"></i>
+                            Updated regularly with new opportunities
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Priority Signup Section (moved below Current Opportunities) -->
+    <section id="priority-signup" class="section-padding py-14 bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-600 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                        Become the first to know about future opportunities! <span aria-hidden="true">👀</span>
+                    </h2>
+                    <p class="text-emerald-50/90 mt-3 max-w-2xl mx-auto">
+                        Join the priority channels for early access to trips, internships, and updates.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding py-20 bg-white nature-pattern">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="tablet-text-4xl font-display text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+                        Meet Your <span class="text-sage-600">Wildlife Guide</span>
+                    </h2>
+                    <p class="mobile-text-xl text-xl text-stone-600 max-w-3xl mx-auto">
+                        Passionate about connecting people with nature through ethical, educational, and transformative
+                        experiences.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+                    <div class="fade-in">
+                        <img id="mainImage" src="images/3.jpg" alt="Cassandra in the field"
+                            class="rounded-2xl shadow-2xl w-full h-64 sm:h-80 md:h-96 object-cover mb-4 sm:mb-6 transition-all duration-500 ease-in-out">
+
+                        <!-- 5 Small Image Containers Below the Big Picture -->
+                        <div class="grid grid-cols-5 gap-1 sm:gap-2 mb-3">
+                            <div class="group cursor-pointer" onclick="switchImages(0, 'images/1.jpg', 'Adventure 1')">
+                                <div
+                                    class="relative overflow-hidden rounded shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 border border-transparent hover:border-sage-400">
+                                    <img id="thumb0" src="images/1.jpg" alt="Adventure 1"
+                                        class="w-full aspect-square object-cover">
+                                </div>
+                            </div>
+
+                            <div class="group cursor-pointer" onclick="switchImages(1, 'images/2.jpg', 'Adventure 2')">
+                                <div
+                                    class="relative overflow-hidden rounded shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 border border-transparent hover:border-sage-400">
+                                    <img id="thumb1" src="images/2.jpg" alt="Adventure 2"
+                                        class="w-full aspect-square object-cover">
+                                </div>
+                            </div>
+
+                            <div class="group cursor-pointer" onclick="switchImages(2, 'images/3.jpg', 'Adventure 3')">
+                                <div
+                                    class="relative overflow-hidden rounded shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 border border-transparent hover:border-sage-400">
+                                    <img id="thumb2" src="images/cas.jpg" alt="Adventure 3"
+                                        class="w-full aspect-square object-cover">
+                                </div>
+                            </div>
+
+                            <div class="group cursor-pointer" onclick="switchImages(3, 'images/4.jpg', 'Adventure 4')">
+                                <div
+                                    class="relative overflow-hidden rounded shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 border border-transparent hover:border-sage-400">
+                                    <img id="thumb3" src="images/4.jpg" alt="Adventure 4"
+                                        class="w-full aspect-square object-cover">
+                                </div>
+                            </div>
+
+                            <div class="group cursor-pointer" onclick="switchImages(4, 'images/5.jpg', 'Adventure 5')">
+                                <div
+                                    class="relative overflow-hidden rounded shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 border border-transparent hover:border-sage-400">
+                                    <img id="thumb4" src="images/5.jpg" alt="Adventure 5"
+                                        class="w-full aspect-square object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="fade-in relative">
+
+
+                        <h3 class="font-display text-2xl font-bold text-stone-800 mb-6">Hi, I'm Cassandra! </h3>
+                        <p class="text-stone-600 mb-6 leading-relaxed">
+                            As a Travel Zoologist and Wildlife Guide, I've dedicated my career to bridging the gap
+                            between conservation science and accessible education. My mission is to provide meaningful
+                            opportunities for aspiring biologists and nature enthusiasts to gain hands-on experience in
+                            the field.
+                        </p>
+                        <p class="text-stone-600 mb-6 leading-relaxed">
+                            Through carefully curated internships, study abroad programs, and ethical wildlife
+                            adventures, I help others develop the skills and passion needed to make a real difference in
+                            conservation.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-sage-50 p-4 rounded-xl">
+                                <i class="fas fa-graduation-cap text-sage-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-stone-800">Education Focus</h4>
+                                <p class="text-sm text-stone-600">Hands-on learning experiences</p>
+                            </div>
+                            <div class="bg-terracotta-50 p-4 rounded-xl">
+                                <i class="fas fa-heart text-terracotta-600 text-2xl mb-2"></i>
+                                <h4 class="font-semibold text-stone-800">Conservation</h4>
+                                <p class="text-sm text-stone-600">Ethical wildlife protection</p>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <a href="https://instagram.com/casanimaladventures" target="_blank"
+                                class="w-12 h-12 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61567946146382" target="_blank"
+                                class="w-12 h-12 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@casanimaladventures" target="_blank"
+                                class="w-12 h-12 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://wa.me/13303383270" target="_blank"
+                                class="w-12 h-12 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/cassandrarayzoologist" target="_blank"
+                                class="w-12 h-12 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-full flex items-center justify-center transition-all"
+                                title="Experience & Credentials">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://linktr.ee/casanimaladventures?utm_source=linktree_profile_share&ltsid=a9b9f2de-1f16-4535-b291-100bbaee9013"
+                                target="_blank"
+                                class="w-12 h-12 bg-sage-100 hover:bg-sage-200 text-sage-700 rounded-full flex items-center justify-center transition-all">
+                                <i class="fas fa-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- CasAnimalAdventuresFeatures Section -->
+    <section id="features" class="section-padding py-20 bg-gradient-to-br from-purple-50 to-blue-50 jungle-pattern">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="fade-in mb-12">
+                    <h2 class="font-display text-3xl md:text-5xl font-bold text-stone-800 mb-6">
+                        <span class="text-purple-600">CasAnimalAdventures</span> Features
+                    </h2>
+                    <p class="text-xl text-stone-600 max-w-3xl mx-auto mb-8">
+                        From conservation talks to personal stories, here's where you can listen to every podcast I've
+                        been featured on. Let's keep the conversation going!
+                    </p>
+                    <a href="https://linktr.ee/casanimaladventuresfeatures" target="_blank"
+                        class="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-podcast mr-3"></i>
+                        Listen to Podcasts
+                        <i class="fas fa-external-link-alt ml-3 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding py-12 sm:py-16 md:py-20 bg-sage-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-12 md:mb-16 fade-in">
+                <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-stone-800 mb-4 sm:mb-6">
+                    My <span class="text-sage-600">Service</span>
+                </h2>
+                <p class="mobile-text-xl text-lg sm:text-xl text-stone-600 max-w-3xl mx-auto px-4">
+                    Comprehensive opportunity designed to advance your career in biology and conservation.
+                </p>
+            </div>
+
+            <div class="flex justify-center max-w-lg mx-auto">
+                <!-- Wildlife Coaching -->
+                <div id="wildlife-coaching"
+                    class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 card-hover fade-in flex flex-col relative overflow-hidden w-full">
+
+                    <div class="w-16 h-16 bg-sage-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-sage-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-1xl font-bold text-stone-800 mb-4">Wildlife Coaching</h3>
+                    <p class="text-stone-600 mb-6">One-on-one mentorship to develop your conservation career path and
+                        field skills.</p>
+                    <ul class="space-y-2 mb-6 flex-grow">
+                        <li class="flex items-center text-stone-600">
+                            <i class="fas fa-check text-sage-600 mr-2"></i>
+                            Career guidance & planning
+                        </li>
+                        <li class="flex items-center text-stone-600">
+                            <i class="fas fa-check text-sage-600 mr-2"></i>
+                            Skill development sessions
+                        </li>
+                        <li class="flex items-center text-stone-600">
+                            <i class="fas fa-check text-sage-600 mr-2"></i>
+                            Portfolio building
+                        </li>
+                    </ul>
+                    <a href="https://cassandraray.setmore.com/cassandraray" target="_blank" rel="noopener noreferrer"
+                        class="block w-full btn-primary text-white text-center py-3 rounded-lg font-semibold mt-auto">
+                        Learn More
+                    </a>
+                    <a href="https://cassandraray.setmore.com/cassandraray?step=time-slot&products=65a4eb1c-ea03-4c84-9e1a-d3c8cf199b49&type=service&staff=6469bcc1-b393-4504-bc6d-7cf9ca5bb834&staffSelected=false" target="_blank" rel="noopener noreferrer"
+                       class="block w-full btn-primary text-white text-center py-3 rounded-lg font-semibold mt-3">
+                        1:1 Wildlife coaching
+                    </a>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- CasAnimalAdventures Merch Store Section -->
+    <section id="merch-store"
+        class="section-padding py-20 bg-gradient-to-br from-orange-50 to-yellow-50 jungle-pattern">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="fade-in mb-12">
+                    <h2 class="font-display text-3xl md:text-5xl font-bold text-stone-800 mb-6">
+                        <span class="text-orange-600">CasAnimalAdventures</span> Merch Store
+                    </h2>
+
+                    <a href="https://shopcasanimalladventures.creator-spring.com/" target="_blank"
+                        class="inline-flex items-center bg-gradient-to-r from-orange-600 to-yellow-600 hover:from-orange-700 hover:to-yellow-700 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-shopping-bag mr-3"></i>
+                        Shop Now
+                        <i class="fas fa-external-link-alt ml-3 text-sm"></i>
+                    </a>
+                    <p class="text-sm text-stone-500 mt-4">
+                        <i class="fas fa-heart mr-1 text-red-500"></i>
+                        While the platform keeps a portion of sales, my share goes directly to conservation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wild Patch Challenge Section -->
+    <section id="wild-patch" class="section-padding py-20 bg-white relative overflow-hidden">
+
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+                        The <span class="text-sage-600">Wild Patch Challenge</span>
+                    </h2>
+                    <p class="text-xl text-stone-600 max-w-3xl mx-auto">
+                        Join our growing community initiative to create wildlife-friendly spaces and document
+                        biodiversity in your local area.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <div class="fade-in">
+                        <h3 class="font-display text-2xl font-bold text-stone-800 mb-6">What is the Wild Patch
+                            Challenge?</h3>
+                        <p class="text-stone-600 mb-6 leading-relaxed">
+                            The Wild Patch Challenge is a new community project where participants create and maintain
+                            wildlife-friendly spaces while documenting the species they encounter. It's a hands-on way
+                            to contribute to local conservation efforts and connect with nature.
+                        </p>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start space-x-4 relative">
+
+                                <div
+                                    class="w-8 h-8 bg-sage-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-seedling text-sage-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800 mb-1">Create Your Patch</h4>
+                                    <p class="text-stone-600 text-sm">Design a wildlife-friendly space in your yard,
+                                        balcony, or community area.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-8 h-8 bg-terracotta-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-camera text-terracotta-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800 mb-1">Document Wildlife</h4>
+                                    <p class="text-stone-600 text-sm">Record the species that visit your patch and share
+                                        your observations.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-8 h-8 bg-forest-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-users text-forest-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800 mb-1">Join the Community</h4>
+                                    <p class="text-stone-600 text-sm">Connect with other participants and share your
+                                        conservation journey.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOy7bBna_ySJ8fcXnLkUXwQktL9L5D89LHbdMXNo_n4N0esA/viewform"
+                                target="_blank"
+                                class="btn-primary text-white px-6 py-3 rounded-lg font-semibold text-center">
+                                <i class="fas fa-leaf mr-2"></i>Join the Challenge
+                            </a>
+
+                            <a href="https://sites.google.com/miamioh.edu/thewildpatchchallenge/home" target="_blank"
+                                class="btn-secondary text-white px-6 py-3 rounded-lg font-semibold text-center">
+                                <i class="fas fa-eye mr-2"></i>View Challenge Details
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="fade-in">
+                        <div class="bg-sage-50 rounded-2xl p-8 shadow-lg">
+                            <h4 class="font-display text-2xl font-bold text-stone-800 mb-6">Challenge Progress</h4>
+
+                            <div class="bg-white rounded-xl p-6 mb-6">
+                                <div class="bg-sage-100 rounded-lg p-4">
+                                    <h5 class="font-semibold text-stone-800 mb-3 text-center">What People Are Creating
+                                    </h5>
+                                    <div class="space-y-2 text-sm text-stone-600">
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-seedling text-green-500 mr-2"></i>
+                                            Wild patches for wildlife
+                                        </div>
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-leaf text-green-600 mr-2"></i>
+                                            Wildlife-friendly gardens
+                                        </div>
+                                        <div class="flex items-center justify-center">
+                                            <i class="fas fa-map-marker-alt text-sage-500 mr-2"></i>
+                                            Community habitat spaces
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <p class="text-stone-600 text-sm mb-4">
+                                    Join our growing community of wildlife conservation enthusiasts creating positive
+                                    environmental impact.
+                                </p>
+                                <div class="bg-gradient-to-r from-sage-100 to-forest-100 rounded-lg p-4">
+                                    <p class="text-sm text-stone-600 italic">
+                                        <i class="fas fa-map-marked-alt mr-2 text-sage-500"></i>
+                                        Custom community map coming soon with recommended wildlife-friendly locations!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Ethical Wildlife Facilities Section -->
+    <section id="wildlife-facilities"
+        class="section-padding py-20 bg-gradient-to-br from-green-50 to-emerald-50 relative overflow-hidden">
+        <!-- Floating Animal GIFs -->
+
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+                    Ethical <span class="text-green-600">Wildlife Facilities</span>
+                </h2>
+                <p class="text-xl text-stone-600 max-w-3xl mx-auto">
+                    This trusted site reviews sanctuaries and organizations to ensure they're ethical and impactful—I
+                    recommend it as your go-to guide.
+                </p>
+            </div>
+
+            <div class="facilities-grid grid grid-cols-1 place-items-center gap-8 max-w-4xl mx-auto">
+                <!-- Wildlife at Heart - Primary Focus -->
+                <div
+                    class="bg-white rounded-2xl shadow-lg pt-6 px-8 pb-8 card-hover fade-in border-l-4 border-green-500 relative overflow-hidden max-w-xl w-full mx-auto text-center">
+
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <i class="fas fa-heart text-green-600 text-3xl leading-none heart-beat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-4">Wildlife at Heart</h3>
+                    <p class="text-stone-600 mb-4">An independent ethics review resource that evaluates sanctuaries and
+                        wildlife organizations for transparency, animal welfare, and responsible practices.</p>
+                    <ul class="space-y-2 text-sm text-stone-600 mb-6 inline-block mx-auto text-left">
+                        <li class="flex items-center">
+                            <i class="fas fa-search text-green-600 mr-2"></i>
+                            Ethical reviews of organizations
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                            Transparency and welfare standards checks
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-compass text-green-600 mr-2"></i>
+                            Guidance on responsible, ethical travel choices
+                        </li>
+                    </ul>
+                    
+                </div>
+
+
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <a href="https://wildlifeatheart.org" target="_blank" rel="noopener noreferrer"
+                    class="conservation-btn group relative inline-flex items-center justify-center px-6 py-4 sm:px-8 sm:py-5 md:px-10 md:py-6 text-base sm:text-lg md:text-xl font-bold text-white bg-gradient-to-r from-green-600 via-green-500 to-green-600 hover:from-green-700 hover:via-green-600 hover:to-green-700 rounded-2xl sm:rounded-3xl shadow-xl hover:shadow-2xl transform hover:scale-105 active:scale-95 transition-all duration-300 ease-out border-2 border-white/20 hover:border-white/40 backdrop-blur-sm overflow-hidden min-h-[60px] sm:min-h-[70px] md:min-h-[80px] w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
+                    <!-- Animated background overlay -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out">
+                    </div>
+
+                    <!-- Pulsing heart animation -->
+                    <div
+                        class="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-red-500 rounded-full animate-pulse opacity-75">
+                    </div>
+
+                    <!-- Icon with enhanced styling -->
+                    <i
+                        class="fas fa-heart mr-3 sm:mr-4 text-white group-hover:text-gray-100 transition-colors duration-300 text-lg sm:text-xl md:text-2xl animate-pulse"></i>
+
+                    <!-- Button text with responsive sizing -->
+                    <span class="relative z-10 tracking-wide leading-tight">
+                        <span class="block sm:hidden">Support Wildlife</span>
+                        <span class="hidden sm:block md:hidden">Support Conservation</span>
+                        <span class="hidden md:block">Support Wildlife Conservation</span>
+                    </span>
+
+                    <!-- Ripple effect on click -->
+                    <div
+                        class="absolute inset-0 rounded-2xl sm:rounded-3xl bg-white/20 transform scale-0 group-active:scale-100 transition-transform duration-200 ease-out">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="hidden section-padding py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden">
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+
+
+
+
+
+            <!-- Research Publications Section -->
+            <div class="mt-16 fade-in">
+                <div class="text-center mb-12">
+                    <h3 class="font-display text-3xl font-bold text-stone-800 mb-4">
+                        Research <span class="text-sage-600">Publications</span>
+                    </h3>
+                    <p class="text-lg text-stone-600 max-w-2xl mx-auto">
+                        Explore my academic research and scientific contributions to wildlife conservation and zoology.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 card-hover">
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-6 text-center md:text-left">
+                            <div
+                                class="w-16 h-16 bg-sage-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-file-alt text-sage-600 text-2xl"></i>
+                            </div>
+                            <div class="flex-1 w-full">
+                                <div class="flex items-center justify-center md:justify-start space-x-2 mb-3">
+                                    <span
+                                        class="px-3 py-1 bg-sage-100 text-sage-700 text-xs font-medium rounded-full">Research</span>
+                                    <span
+                                        class="px-3 py-1 bg-terracotta-100 text-terracotta-700 text-xs font-medium rounded-full">Academic</span>
+                                </div>
+                                <h4 class="text-xl font-bold text-stone-800 mb-3">Academic Research Document</h4>
+                                <p class="text-stone-600 mb-4 leading-relaxed">
+                                    Access my comprehensive research documentation covering wildlife conservation
+                                    methodologies, field study results, and scientific observations from various
+                                    conservation projects.
+                                </p>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                                    <a href="https://docs.google.com/document/d/158asAbH3aIi96QvQmXnpwFWu4OXK6XFPALkEhI2KEq4/edit?tab=t.0"
+                                        target="_blank"
+                                        class="inline-flex items-center justify-center px-6 py-3 bg-sage-600 hover:bg-sage-700 text-white rounded-lg font-medium transition-colors">
+                                        <i class="fas fa-external-link-alt mr-2"></i>
+                                        View Research Document
+                                    </a>
+                                    <button onclick="copyResearchLink()"
+                                        class="inline-flex items-center justify-center px-6 py-3 bg-stone-200 hover:bg-stone-300 text-stone-700 rounded-lg font-medium transition-colors">
+                                        <i class="fas fa-copy mr-2"></i>
+                                        Copy Link
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support My Wildlife Career Section -->
+    <section id="support-career"
+        class="section-padding py-20 bg-gradient-to-br from-purple-50 to-indigo-50 jungle-pattern">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="fade-in mb-12">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+                        Support My <span class="text-purple-600">Wildlife Career</span>
+                    </h2>
+                    <p class="text-xl text-stone-600 max-w-3xl mx-auto mb-8">
+                        Your support helps me cover career expenses like research, fieldwork, and educational resources.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://gofund.me/5defbacc1"
+                            target="_blank"
+                            class="inline-flex items-center bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <i class="fas fa-heart mr-3"></i>
+                            GoFundMe
+                            <i class="fas fa-external-link-alt ml-3 text-sm"></i>
+                        </a>
+                        <!-- <a href="https://linktr.ee/casanimaladventuresfeatures" target="_blank"
+                            class="inline-flex items-center bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <i class="fas fa-tree mr-3"></i>
+                            Tr.ee Support Link
+                            <i class="fas fa-external-link-alt ml-3 text-sm"></i>
+                        </a> -->
+                    </div>
+                    <p class="text-sm text-stone-500 mt-4">
+                        <i class="fas fa-graduation-cap mr-1 text-purple-500"></i>
+                        Every contribution helps advance wildlife conservation education
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Trips Gallery Section -->
+    <section id="past-trips" class="section-padding py-20 bg-gradient-to-br from-amber-50 to-orange-50 jungle-pattern">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+                        <span class="text-orange-600">Past Trips</span> Gallery
+                    </h2>
+                    <p class="text-xl text-stone-600 max-w-3xl mx-auto">
+                        Explore memories from wildlife adventures around the world.
+                    </p>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/1.jpg" alt="Wildlife Adventure 1" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure 1</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/2.jpg" alt="Wildlife Adventure 2" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure 2</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/3.jpg" alt="Wildlife Adventure 3" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure 3</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/4.jpg" alt="Wildlife Adventure 4" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure 4</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/5.jpg" alt="Wildlife Adventure 5" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure 5</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/B.jpg" alt="Wildlife Adventure B" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure B</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/D.jpg" alt="Wildlife Adventure D" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure D</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/F.jpg" alt="Wildlife Adventure F" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure F</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/G.jpg" alt="Wildlife Adventure G" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure G</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/cas.jpg" alt="Wildlife Adventure cas" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure cas</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/rica.jpg" alt="Wildlife Adventure rica" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure rica</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/vets.jpg" alt="Wildlife Adventure vets" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure vets</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item fade-in relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="images/wani.jpg" alt="Wildlife Adventure wani" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-medium">Adventure wani</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (moved to bottom before footer) -->
+    <section id="contact" class="section-padding py-12 sm:py-16 md:py-20 bg-sage-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-12 md:mb-16 fade-in">
+                <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-stone-800 mb-4 sm:mb-6">
+                    Get In <span class="text-sage-600">Touch</span>
+                </h2>
+                <p class="mobile-text-xl text-lg sm:text-xl text-stone-600 max-w-3xl mx-auto px-4">
+                    Ready to start your conservation journey? Let's discuss how I can help you achieve your goals.
+                </p>
+            </div>
+
+            <div class="contact-grid grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+                <!-- Contact Form + CTAs (stacked in left column) -->
+                <div class="fade-in flex flex-col gap-3 lg:self-start">
+                    <div class="bg-white rounded-2xl shadow-lg p-5 pb-1 contact-form-card self-start">
+                    <h3 class="text-2xl font-bold text-stone-800 mb-6">Send Me a Message</h3>
+
+                    <form id="contact-form">
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <label for="name" class="block text-stone-700 mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" name="name"
+                                    class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 focus:border-transparent transition-all"
+                                    placeholder="John Doe Smith" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="block text-stone-700 mb-2 font-medium">Your Email</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 focus:border-transparent transition-all"
+                                placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="interest" class="block text-stone-700 mb-2 font-medium">I'm Interested
+                                In</label>
+                            <select id="interest" name="interest"
+                                class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 focus:border-transparent transition-all" required>
+                                <option value="" selected disabled>Select your interest</option>
+                                <option value="wildlife-coaching">Wildlife Coaching</option>
+                                <option value="trips-internships-study-abroad">Trips, Internships & Study Abroad
+                                    Opportunities</option>
+                                <option value="wild-patch">Wild Patch Challenge</option>
+                                <option value="scholarship">Scholarship Information</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="experience" class="block text-stone-700 mb-2 font-medium">Experience
+                                Level</label>
+                            <select id="experience" name="experience"
+                                class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 focus:border-transparent transition-all" required>
+                                <option value="" selected disabled>Select your experience level</option>
+                                <option value="beginner">Beginner (No prior experience)</option>
+                                <option value="some-experience">Some Experience (1-2 years)</option>
+                                <option value="intermediate">Intermediate (3-5 years)</option>
+                                <option value="advanced">Advanced (5+ years)</option>
+                                <option value="professional">Professional</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="message" class="block text-stone-700 mb-2 font-medium">Your Message</label>
+                            <textarea id="message" name="message" rows="4"
+                                class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 focus:border-transparent transition-all" required
+                                placeholder="Tell me about your goals, interests, and how I can help you..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-primary text-white py-2 rounded-lg font-semibold mb-4">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-stone-800 mb-6 text-center md:text-left">Get In Touch</h3>
+
+                    <!-- Map removed to respect privacy -->
+
+                    <!-- Contact Details -->
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                            <div class="w-10 h-10 bg-sage-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-sage-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-stone-800">Location</h4>
+                                <p class="text-stone-600 text-sm">Available worldwide</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                            <div class="w-10 h-10 bg-sage-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-sage-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-stone-800">Email</h4>
+                                <p class="text-stone-600 text-sm">Casanimaladventures@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                            <div class="w-10 h-10 bg-sage-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-calendar-alt text-sage-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-stone-800">Schedule a Meeting</h4>
+                                <p class="text-stone-600 text-sm mb-2">Ready to discuss internships or trips?</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                            <div class="w-10 h-10 bg-sage-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-sage-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-stone-800">Response Time</h4>
+                                <p class="text-stone-600 text-sm">I typically respond within 24-48 hours</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Media (moved under Response Time for desktop layout) -->
+                        <div class="bg-white rounded-lg p-4 shadow-sm mt-3">
+                            <h4 class="font-semibold text-stone-800 mb-3">Follow My Adventures</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://instagram.com/casanimaladventures" target="_blank"
+                                    class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@casanimaladventures" target="_blank"
+                                    class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=61567946146382" target="_blank"
+                                    class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://www.tiktok.com/@casanimaladventures" target="_blank"
+                                    class="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://wa.me/13303383270" target="_blank"
+                                    class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="https://linktr.ee/casanimaladventures?utm_source=linktree_profile_share&ltsid=a9b9f2de-1f16-4535-b291-100bbaee9013"
+                                    target="_blank"
+                                    class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+                                    <i class="fas fa-link"></i>
+                                </a>
+                                <a href="mailto:Cassandra.ray@worldpackers.com"
+                                    class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+        <button id="lightbox-close" class="absolute top-4 right-4 text-white text-4xl hover:text-orange-400 transition-colors z-10">&times;</button>
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-orange-400 transition-colors z-10">&#10094;</button>
+        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-orange-400 transition-colors z-10">&#10095;</button>
+        <img id="lightbox-image" src="" alt="Gallery Image" class="max-w-full max-h-[90vh] object-contain rounded-lg">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-stone-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="footer-grid grid md:grid-cols-4 gap-8 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                            <img src="images/caslogo.jpg" alt="Logo" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">casanimaladventures</h3>
+                            <p class="text-stone-300">Travel Zoologist & Wildlife Guide</p>
+                        </div>
+                    </div>
+                    <p class="text-stone-300 mb-6 max-w-md">
+                        Connecting people with nature through ethical wildlife adventures and conservation education.
+                        Join me in making a difference for our planet's future.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://instagram.com/casanimaladventures" target="_blank"
+                            class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61567946146382" target="_blank"
+                            class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@casanimaladventures" target="_blank"
+                            class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/13303383270" target="_blank"
+                            class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://linktr.ee/casanimaladventures?utm_source=linktree_profile_share&ltsid=a9b9f2de-1f16-4535-b291-100bbaee9013"
+                            target="_blank"
+                            class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fas fa-link"></i>
+                        </a>
+                        <a href="mailto:Cassandra.ray@worldpackers.com"
+                            class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-stone-300 hover:text-sage-400 transition-colors">About Me</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-stone-300 hover:text-sage-400 transition-colors">Services</a></li>
+                        <li><a href="#wild-patch" class="text-stone-300 hover:text-sage-400 transition-colors">Wild
+                                Patch Challenge</a></li>
+                        <li><a href="#past-trips"
+                                class="text-stone-300 hover:text-sage-400 transition-colors">Past Trips</a></li>
+                        <li><a href="#contact" class="text-stone-300 hover:text-sage-400 transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Get In Touch</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-sage-400"></i>
+                            <span class="text-stone-300">Cassandra.ray@worldpackers.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-globe text-sage-400"></i>
+                            <span class="text-stone-300">Worldwide Adventures</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-stone-700 pt-8 text-center">
+                <p class="text-stone-400">
+                    © 2024 thewildpatchchallenge. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("1lfy1-Lxpb6jvAeDj");
+        })();
+    </script>
+
+    <!-- JavaScript -->
+    <script>
+        // Ensure EmailJS is loaded before attaching listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // STOP default form submission (mailto)
+                    
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+                    
+                    // EmailJS Service & Template IDs
+                    const serviceID = 'service_sj44cxq';
+                    const templateID = 'template_cju5lcw';
+                    const confirmationTemplateID = 'template_j4rypv9';
+                    
+                    // Send notification email (Critical)
+                    const notificationPromise = emailjs.sendForm(serviceID, templateID, this);
+                    
+                    // Send confirmation email (Non-critical) - Fire and forget
+                    // We initiate this immediately to capture form data before reset
+                    const confirmationPromise = emailjs.sendForm(serviceID, confirmationTemplateID, this)
+                        .catch(err => console.warn('Confirmation email failed (non-critical):', err));
+
+                    // Wait for the main notification
+                    notificationPromise
+                        .then(() => {
+                            // Success
+                            submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Sent Successfully!';
+                            submitBtn.classList.remove('btn-primary');
+                            submitBtn.classList.add('bg-green-600');
+                            contactForm.reset();
+                            
+                            // Show custom success modal
+                            if (typeof showSuccessModal === 'function') {
+                                showSuccessModal();
+                            } else {
+                                alert('Thank you! Your message has been sent successfully.');
+                            }
+                            
+                            setTimeout(() => {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalBtnText;
+                                submitBtn.classList.remove('bg-green-600');
+                                submitBtn.classList.add('btn-primary');
+                            }, 3000);
+                        }, (err) => {
+                            // Error
+                            submitBtn.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Failed to Send';
+                            submitBtn.classList.remove('btn-primary');
+                            submitBtn.classList.add('bg-red-600');
+                            
+                            console.error('EmailJS Error:', JSON.stringify(err));
+                            alert('Oops! Something went wrong. Please try again later.');
+                            
+                            setTimeout(() => {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalBtnText;
+                                submitBtn.classList.remove('bg-red-600');
+                                submitBtn.classList.add('btn-primary');
+                            }, 3000);
+                        });
+                });
+            }
+        });
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = mobileMenuBtn.querySelector('.hamburger-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open and reset hamburger icon
+                    mobileMenu.classList.add('hidden');
+                    hamburgerIcon.classList.remove('active');
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+
+
+
+        // Map functionality removed to respect privacy and avoid null references
+
+        // Copy research link function
+        function copyResearchLink() {
+            const researchUrl = 'https://docs.google.com/document/d/158asAbH3aIi96QvQmXnpwFWu4OXK6XFPALkEhI2KEq4/edit?tab=t.0';
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(researchUrl).then(() => {
+                    // Show success message via button text change (no alert)
+                    const button = (typeof event !== 'undefined' && event.target && event.target.closest)
+                        ? event.target.closest('button')
+                        : (document.activeElement && document.activeElement.closest ? document.activeElement.closest('button') : null);
+                    if (!button) return;
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+                    button.classList.add('bg-green-200', 'text-green-700');
+                    button.classList.remove('bg-stone-200', 'text-stone-700');
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.classList.remove('bg-green-200', 'text-green-700');
+                        button.classList.add('bg-stone-200', 'text-stone-700');
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback for older browsers
+                    fallbackCopyTextToClipboard(researchUrl);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopyTextToClipboard(researchUrl);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.top = '0';
+            textArea.style.left = '0';
+            textArea.style.position = 'fixed';
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            const button = (typeof event !== 'undefined' && event.target && event.target.closest)
+                ? event.target.closest('button')
+                : (document.activeElement && document.activeElement.closest ? document.activeElement.closest('button') : null);
+
+            try {
+                const copied = document.execCommand('copy');
+                if (copied && button) {
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+                    button.classList.add('bg-green-200', 'text-green-700');
+                    button.classList.remove('bg-stone-200', 'text-stone-700');
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.classList.remove('bg-green-200', 'text-green-700');
+                        button.classList.add('bg-stone-200', 'text-stone-700');
+                    }, 2000);
+                }
+            } catch (err) {
+                // No alert: indicate failure via button state if available
+                if (button) {
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-times mr-2"></i>Copy failed';
+                    button.classList.add('bg-red-200', 'text-red-700');
+                    button.classList.remove('bg-stone-200', 'text-stone-700');
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.classList.remove('bg-red-200', 'text-red-700');
+                        button.classList.add('bg-stone-200', 'text-stone-700');
+                    }, 2500);
+                }
+                console.error('Unable to copy link. Please copy manually:', text);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.3)';
+                navbar.style.backdropFilter = 'blur(5px)';
+            }
+        });
+
+        // Initialize navbar background
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            navbar.style.background = 'rgba(0, 0, 0, 0.3)';
+            navbar.style.backdropFilter = 'blur(5px)';
+        });
+
+        // Image gallery functionality
+        function changeMainImage(imageSrc, altText) {
+            const mainImage = document.getElementById('mainImage');
+
+            // Add fade out effect
+            mainImage.style.opacity = '0';
+            mainImage.style.transform = 'translateY(-10px)';
+
+            // Change image after fade out
+            setTimeout(() => {
+                mainImage.src = imageSrc;
+                mainImage.alt = altText;
+
+                // Fade in with slide down effect
+                mainImage.style.opacity = '1';
+                mainImage.style.transform = 'translateY(0)';
+            }, 250);
+        }
+
+        function switchImages(thumbIndex, newMainSrc, newMainAlt) {
+            const mainImage = document.getElementById('mainImage');
+            const thumbImage = document.getElementById('thumb' + thumbIndex);
+
+            const currentMainSrc = mainImage.src;
+            const currentMainAlt = mainImage.alt;
+            const currentThumbSrc = thumbImage.src;
+
+            // Get just the filename for comparison
+            const mainFileName = currentMainSrc.split('/').pop();
+            const thumbFileName = currentThumbSrc.split('/').pop();
+
+            // Prevent switching if the thumbnail is already the same as main image
+            if (mainFileName === thumbFileName) {
+                return;
+            }
+
+            // Add touch feedback for mobile
+            if ('ontouchstart' in window) {
+                thumbImage.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    thumbImage.style.transform = '';
+                }, 150);
+            }
+
+            mainImage.style.opacity = '0';
+            mainImage.style.transform = 'translateY(-10px)';
+
+            setTimeout(() => {
+                mainImage.src = currentThumbSrc;
+                mainImage.alt = thumbImage.alt;
+
+                thumbImage.src = currentMainSrc;
+                thumbImage.alt = currentMainAlt;
+
+                mainImage.style.opacity = '1';
+                mainImage.style.transform = 'translateY(0)';
+            }, 250);
+        }
+
+        // Add touch event handling for better mobile experience
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('ontouchstart' in window) {
+                const thumbnails = document.querySelectorAll('[id^="thumb"]');
+                thumbnails.forEach(thumb => {
+                    thumb.style.cursor = 'pointer';
+                    thumb.addEventListener('touchstart', function (e) {
+                        e.preventDefault();
+                    });
+                });
+            }
+        });
+    </script>
+    <!-- Priority Chat (restored) -->
+    <a href="https://wa.me/13303383270" target="_blank" aria-label="Priority Chat"
+       class="fixed bottom-6 right-6 z-10 inline-flex items-center px-4 py-3 rounded-full shadow-xl bg-green-600 hover:bg-green-700 text-white font-semibold transition-transform transform hover:scale-105">
+        <i class="fab fa-whatsapp mr-2"></i>
+        Priority Chat
+    </a>
+
+
+
+    <!-- Custom Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm" onclick="closeSuccessModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0 translate-y-4 border border-sage-100" id="modal-content">
+            <!-- Close Button -->
+            <button onclick="closeSuccessModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-600 transition-colors focus:outline-none">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+    
+            <!-- Success Icon -->
+            <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">
+                <i class="fas fa-check text-3xl text-green-600"></i>
+            </div>
+    
+            <!-- Text -->
+            <div class="text-center">
+                <h3 id="modal-title" class="text-2xl font-bold text-stone-800 mb-2 font-display">Message Sent!</h3>
+                <p class="text-stone-600 mb-8">
+                    Thank you for reaching out. Your adventure begins here! We'll get back to you shortly.
+                </p>
+                
+                <!-- Action Button -->
+                <button onclick="closeSuccessModal()" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 focus:ring-4 focus:ring-green-200">
+                    Great!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            const content = document.getElementById('modal-content');
+
+            if (modal && content) {
+                modal.classList.remove('hidden');
+                // Trigger reflow
+                void modal.offsetWidth;
+
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95', 'opacity-0', 'translate-y-4');
+                content.classList.add('scale-100', 'opacity-100', 'translate-y-0');
+            }
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            const content = document.getElementById('modal-content');
+
+            if (modal && content) {
+                modal.classList.add('opacity-0');
+                content.classList.remove('scale-100', 'opacity-100', 'translate-y-0');
+                content.classList.add('scale-95', 'opacity-0', 'translate-y-4');
+
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Lightbox Gallery Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            let currentIndex = 0;
+            const images = [];
+
+            // Collect all image sources
+            galleryItems.forEach((item, index) => {
+                const img = item.querySelector('img');
+                if (img) {
+                    images.push(img.src);
+                    item.addEventListener('click', () => openLightbox(index));
+                }
+            });
+
+            function openLightbox(index) {
+                currentIndex = index;
+                lightboxImage.src = images[currentIndex];
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                lightboxImage.style.opacity = '0';
+                setTimeout(() => {
+                    lightboxImage.src = images[currentIndex];
+                    lightboxImage.style.opacity = '1';
+                }, 200);
+            }
+
+            function showPrevImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                lightboxImage.style.opacity = '0';
+                setTimeout(() => {
+                    lightboxImage.src = images[currentIndex];
+                    lightboxImage.style.opacity = '1';
+                }, 200);
+            }
+
+            // Event listeners
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxNext.addEventListener('click', showNextImage);
+            lightboxPrev.addEventListener('click', showPrevImage);
+
+            // Close on background click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowRight') showNextImage();
+                    if (e.key === 'ArrowLeft') showPrevImage();
+                }
+            });
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            lightbox.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            lightbox.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        showNextImage();
+                    } else {
+                        showPrevImage();
+                    }
+                }
+            }
+
+            // Add smooth transition to lightbox image
+            lightboxImage.style.transition = 'opacity 0.2s ease-in-out';
+        });
+    </script>
+</body>
+
+</html>
