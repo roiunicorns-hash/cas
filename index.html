@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <style>
         :root {
@@ -3254,7 +3255,7 @@
                                     class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
                                     <i class="fas fa-link"></i>
                                 </a>
-                                <a href="mailto:Cassandra.ray@worldpackers.com"
+                                <a href="mailto:casanimaladventures@gmail.com"
                                     class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
                                     <i class="fas fa-envelope"></i>
                                 </a>
@@ -3316,7 +3317,7 @@
                             class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
                             <i class="fas fa-link"></i>
                         </a>
-                        <a href="mailto:Cassandra.ray@worldpackers.com"
+                        <a href="mailto:casanimaladventures@gmail.com"
                             class="w-10 h-10 bg-stone-700 hover:bg-sage-600 rounded-full flex items-center justify-center transition-colors">
                             <i class="fas fa-envelope"></i>
                         </a>
@@ -3346,7 +3347,7 @@
                     <div class="space-y-3">
                         <div class="flex items-center space-x-3">
                             <i class="fas fa-envelope text-sage-400"></i>
-                            <span class="text-stone-300">Cassandra.ray@worldpackers.com</span>
+                            <span class="text-stone-300">casanimaladventures@gmail.com</span>
                         </div>
                         <div class="flex items-center space-x-3">
                             <i class="fas fa-globe text-sage-400"></i>
@@ -3391,9 +3392,9 @@
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
 
                     // EmailJS Service & Template IDs
-                    const serviceID = 'service_sj44cxq';
-                    const templateID = 'template_cju5lcw';
-                    const confirmationTemplateID = 'template_j4rypv9';
+                    const serviceID = 'service_l7gmsye';
+                    const templateID = 'template_3v3460l';
+                    const confirmationTemplateID = 'template_k1kp07f';
 
                     // Send notification email (Critical)
                     const notificationPromise = emailjs.sendForm(serviceID, templateID, this);
@@ -3425,7 +3426,8 @@
                                 submitBtn.classList.remove('bg-green-600');
                                 submitBtn.classList.add('btn-primary');
                             }, 3000);
-                        }, (err) => {
+                        })
+                        .catch((err) => {
                             // Error
                             submitBtn.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Failed to Send';
                             submitBtn.classList.remove('btn-primary');
